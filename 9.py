@@ -1,0 +1,1 @@
+# 09. Write a Python program to find the item with maximum occurrences in a given list
