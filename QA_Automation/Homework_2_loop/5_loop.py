@@ -1,3 +1,5 @@
+import decimal
+
 # 5. Перемножить все не чётные значения в диапазоне от 9173 до 9435;
 print("5. Перемножить все не чётные значения в диапазоне от 9173 до 9435;")
 
@@ -12,4 +14,5 @@ for i in nums:
         continue
     else:
         numProduct = numProduct * i
-print(f"The product of even number in range {numFirst} to {numSec} is:", numProduct)
+        numProduct = decimal.Decimal(numProduct)
+print(f"The product of even number in range {numFirst} to {numSec} is:", "{:.2e}".format(numProduct))
