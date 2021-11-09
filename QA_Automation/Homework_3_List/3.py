@@ -1,5 +1,3 @@
-import random # import e inchi hamar es grel?
-
 # 03. Write a program to remove duplicates from a list
 print("03. Write a program to remove duplicates from a list")
 
