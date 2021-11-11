@@ -1,8 +1,12 @@
-# 2. Write a program to get the top three items in a shop. Go to the editor
-sampleData = {'item1': 45.50, 'item2': 35, 'item3': 41.30, 'item4': 55, 'item5': 24}
+import os
 
-dictValues = sampleData.values()
-someList = list(dictValues)
-someList.sort()
-print(someList[-3:])
-
+outfile = open("xxx.txt", "x")
+for filename in os.listdir("."):
+    if filename != "xxx.txt" or filename.endswith(".py"):
+        with open(filename, 'r') as readfile:
+            for line in readfile:
+                outfile.write(line + "\n")
+                # print(os.path.join(os.listdir("."), filename))
+        continue
+    else:
+        continue
