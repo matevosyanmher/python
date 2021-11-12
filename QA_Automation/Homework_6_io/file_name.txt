@@ -1,4 +1,0 @@
-1) https://www.w3schools.com/python/python_file_handling.asp
-2) https://www.w3schools.com/python/python_file_open.asp
-3) https://www.w3schools.com/python/python_file_write.asp
-4) https://www.w3schools.com/python/python_file_remove.asp
