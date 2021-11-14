@@ -1,5 +1,11 @@
-import os, string
+# 1. Write a function to multiply all the numbers in a given list
+def multiply(lists):
+    result = 1
+    for i in lists:
+        result = result * i
+    return result
 
-with open("functions", "rb") as f:
-    for file in os.walk(".py"):
-       file.open("2.functions.py")
+
+lists = [1, 2, 3, 4]
+
+print(multiply(lists))
