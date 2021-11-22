@@ -1,6 +1,6 @@
 # 3. Write a function to print the even numbers from a given list.
 
-def even_numbers(numbers):
+def even_numbers(numbers: list) -> list:
     result = []
     for i in numbers:
         if i % 2 == 0:
