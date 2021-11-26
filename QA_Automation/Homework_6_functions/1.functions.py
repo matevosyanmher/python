@@ -1,7 +1,7 @@
 # 1. Write a function to multiply all the numbers in a given list
-def multiply(lists):
+def multiply(lst):
     result = 1
-    for i in lists:
+    for i in lst:
         result = result * i
     return result
 
