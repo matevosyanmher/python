@@ -12,10 +12,10 @@ def regexp(string):
 
     output = []
     for match in matches:
-        match = match.replace(" ", "", 1)
+        match = match.replace(" ", "", 2)
         output.append(match)
 
     return output
 
 
-regexp(r"Համաձայն Հ/Ա Ա43770154, ա12345678901, 43770 15405 ա/թ. 03/11/21 (Online banking 321656, dd 12/099/2021)")
+# regexp(r"Համաձայն Հ/Ա Ա43770154, ա12345678901, 43770 15405 ա/թ. 03/11/21 (Online banking 321656, dd 12/099/2021)")
