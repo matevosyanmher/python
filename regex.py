@@ -10,8 +10,8 @@ def regexp(string):
 
     output = []
     for match in matches:
-        match.replace(" ", "", 1)
-        output.append(match)
+        match1 = match.replace(" ", "", 2)
+        output.append(match1)
 
     print(output)
 
