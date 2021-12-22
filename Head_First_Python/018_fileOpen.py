@@ -1,0 +1,5 @@
+todos = open('todos.txt', 'w')
+print('azat', file=todos)
+todos.write('123121')
+todos.write('34654\n')
+todos.close()
