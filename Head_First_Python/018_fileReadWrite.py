@@ -1,14 +1,14 @@
-# todos = open('todos.txt', 'a')
-#
-# print('Put out the trash. ', file=todos)
-# print('Feed the cat. ', file=todos)
-# print('Prepare tax return. ', file=todos)
+todos = open('todos.txt', 'a')
 
-# todos.close()
+print('Put out the trash. ', file=todos)
+print('Feed the cat. ', file=todos)
+print('Prepare tax return. ', file=todos)
+
+todos.close()
 
 tasks = open('todos.txt')
 
 for chore in tasks:
-    print(chore, end='')
+    print(chore, end="")
 
 tasks.close()

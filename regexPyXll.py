@@ -1,12 +1,11 @@
 import re
 from pyxll import xl_func
-import pprint
 
 
 @xl_func
 def regexp(string):
     # string = "Համաձայն Հ/Ա Ա43770154, ա12345678901, 4377015405 ա/թ. 03/11/21 (Online banking 321656, dd 12/099/2021)"
-    new_string = re.sub('\(.*\)', '()', string)
+    new_string = re.sub(r'\(.*\)', '()', string)
     regex = r'[Ա|ա|\s]\d(?: ?\d){3,9}'
 
     matches = re.findall(regex, new_string)
