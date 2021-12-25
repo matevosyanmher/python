@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.service import Service
 import time
 
 driver = webdriver.Chrome(r"C:\chromedriver_win32\chromedriver.exe")
@@ -31,7 +32,8 @@ driver.find_element(By.XPATH, '//*[@id="add-to-cart-button"]').click()
 driver.find_element(By.XPATH, '//*[@id="sw-gtc"]/span/a').click()
 driver.find_element(By.XPATH, '//*[@id="a-autoid-0-announce"]').click()
 driver.find_element(By.XPATH, '//*[@id="quantity_1"]').click()
-driver.find_element(By.PARTIAL_LINK_TEXT, 'Delete Jenga Giant JS6 (Stacks to Over 4 Feet)').click()
+time.sleep(5)
+delete_item = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,
+         '//*[@id="sc-item-Cb4ce1c3c-5a4e-4f8b-b78e-f73c59c7d98f"]/div[4]/div/div[1]/div/div/div[2]/div[1]/span[2]/span'))).click()
 
-# searchBar.send_keys("")
-# driver.quit()
+driver.quit()
