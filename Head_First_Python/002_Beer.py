@@ -12,4 +12,3 @@ for beerNumber in range(99, 0, -1):
             word = "bottle"
         print(newNumber, word, "of beer on the wall.")
     print()
-

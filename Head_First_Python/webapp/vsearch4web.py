@@ -1,15 +1,32 @@
 from flask import Flask, render_template, request, escape
 from vsearch import search4letters
+from DBcm import UseDatabase
 
 app = Flask(__name__)
+app.config['dbconfig'] = dbconfig = {'host': '127.0.0.1',
+                                     'user': 'vsearch',
+                                     'password': 'Mf101010$%',
+                                     'database': 'vsearchlogDB', }
 
 
 def log_request(req: "flask_request", res: str) -> None:
-    with open('vsearch.log', 'a') as log:
-        print(req.form, file=log)
-        print(req.remote_addr, file=log)
-        print(req.user_agent, file=log)
-        print(res, file=log)
+    """Log details of the web request and the results"""
+
+    with UseDatabase(dbconfig) as cursor:
+        _SQL = '''show tables'''
+        cursor.execute(_SQL)
+        data = cursor.fetchall()
+        print(data)
+
+        _SQL = '''insert into log
+                        (phrase, letters, ip, browser_string, results)
+                    values
+                        (%s, %s, %s, %s, %s)'''
+    cursor.execute(_SQL, (req.form['phrase'],
+                          req.form['letters'],
+                          req.remote_addr,
+                          req.user_agent.browser,
+                          res,))
 
 
 @app.route('/search4', methods=['POST'])
@@ -27,10 +44,18 @@ def do_search() -> 'html':
 
 
 @app.route('/viewlog')
-def view_the_log() -> str:
-    with open('vsearch.log') as log:
-        contents = log.read()
-    return escape(contents)
+def view_log() -> 'html':
+    '''Display the contents of the log file asHTML table'''
+    with UseDatabase(dbconfig) as cursor:
+        _SQL = '''select phrase, letters, ip, browser_string, results from log'''
+        cursor.execute(_SQL)
+        contents = cursor.fetchall()
+
+    titles = ('Phrase', 'Letters', 'Remote_add', 'User_agent', 'Results')
+    return render_template('viewlog.html',
+                           the_title='View Log',
+                           the_row_titles=titles,
+                           the_data=contents, )
 
 
 @app.route('/')

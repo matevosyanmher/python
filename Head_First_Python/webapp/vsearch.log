@@ -1,12 +1,3 @@
-ImmutableMultiDict([('phrase', 'asf'), ('letters', 'aeiou')])
-127.0.0.1
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36
-{'a'}
-ImmutableMultiDict([('phrase', 'letters'), ('letters', 'aeiou')])
-127.0.0.1
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36
-{'e'}
-ImmutableMultiDict([('phrase', 'life, the universe, and everything'), ('letters', 'aeiou')])
-127.0.0.1
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36
-{'u', 'i', 'a', 'e'}
+ImmutableMultiDict([('phrase', 'gayane'), ('letters', 'aeiou')])|127.0.0.1|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36|{'e', 'a'}
+ImmutableMultiDict([('phrase', 'galaxy'), ('letters', 'xyz')])|127.0.0.1|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36|{'y', 'x'}
+ImmutableMultiDict([('phrase', 'myau myau'), ('letters', 'zyx')])|127.0.0.1|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36|{'y'}

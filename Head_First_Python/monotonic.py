@@ -1,4 +1,22 @@
-lst = [1, 2, 3, 4, 5, 6]
+lst = [1, 2, 3, 9, 5, 6]
+
+
+# This is the same as the previous example, but with a generator
+def gen_func():
+    for i in range(len(lst) - 1):
+        if lst[i] <= lst[i + 1]:
+            yield "ok"
+        else:
+            yield "not"
+
+
+# This is the same as the previous example, but with a generator
+def gen_func2():
+    for i in range(len(lst) - 1):
+        if lst[i] <= lst[i + 1]:
+            yield "ok"
+        else:
+            yield "not"
 
 
 def is_monotonic(lst):
@@ -15,4 +33,5 @@ def is_monotonic(lst):
         print("True")
 
 
-is_monotonic(lst)
+is_monotonic(lst=lst)
+print(list(gen_func()))

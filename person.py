@@ -15,7 +15,8 @@ class Person:
         return super().__hash__()
 
 
-p1 = Person('Ilon', 'Musk', 'ՀԱՀ')
+
+p1 = Person('Elon', 'Musk', 'ՀԱՀ')
 p1.print_info()
 p2 = Person('Mher', 'Matevosyan', 'Vanadzor')
 p2.print_info()
@@ -28,12 +29,18 @@ class Circle:
     def __init__(self, radius):
         self.radius = radius
 
-    def get_area(self, radius):
-        return Circle.PI * radius ** 2
+    def get_area(self):
+        return Circle.PI * self.radius ** 2
 
-    def get_length(self, radius):
-        return Circle.PI * 2 * radius
+    def get_length(self):
+        return Circle.PI * 2 * self.radius
 
 
-c1 = Circle(5)
-print(c1.get_length(5))
+class NewCircle(Circle):
+    def __init__(self, radius: int) -> None:
+        super().__init__(radius)
+
+
+c2 = NewCircle(radius=6)
+c2.get_length()
+print(c2.get_area())
