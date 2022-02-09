@@ -1,32 +1,27 @@
-from flask import Flask, render_template, request, escape
+from flask import Flask, render_template, request
 from vsearch import search4letters
-from DBcm import UseDatabase
+from DBcm import UseDatabase, ConnectionError, CredentialsError, SQLError
 
 app = Flask(__name__)
-app.config['dbconfig'] = dbconfig = {'host': '127.0.0.1',
-                                     'user': 'vsearch',
-                                     'password': 'Mf101010$%',
-                                     'database': 'vsearchlogDB', }
+app.config['dbconfig'] = {'host': '127.0.0.1',
+                          'user': 'vsearch',
+                          'password': 'Mf101010$%',
+                          'database': 'vsearchlogDB', }
 
 
 def log_request(req: "flask_request", res: str) -> None:
     """Log details of the web request and the results"""
 
-    with UseDatabase(dbconfig) as cursor:
-        _SQL = '''show tables'''
-        cursor.execute(_SQL)
-        data = cursor.fetchall()
-        print(data)
-
-        _SQL = '''insert into log
+    with UseDatabase(app.config['dbconfig']) as cursor:
+        _SQL = """insert into log
                         (phrase, letters, ip, browser_string, results)
-                    values
-                        (%s, %s, %s, %s, %s)'''
-    cursor.execute(_SQL, (req.form['phrase'],
-                          req.form['letters'],
-                          req.remote_addr,
-                          req.user_agent.browser,
-                          res,))
+                        values
+                        (%s, %s, %s, %s, %s)"""
+        cursor.execute(_SQL, (req.form['phrase'],
+                              req.form['letters'],
+                              req.remote_addr,
+                              req.user_agent.browser,
+                              res,))
 
 
 @app.route('/search4', methods=['POST'])
@@ -46,7 +41,7 @@ def do_search() -> 'html':
 @app.route('/viewlog')
 def view_log() -> 'html':
     '''Display the contents of the log file asHTML table'''
-    with UseDatabase(dbconfig) as cursor:
+    with UseDatabase(app.config['dbconfig']) as cursor:
         _SQL = '''select phrase, letters, ip, browser_string, results from log'''
         cursor.execute(_SQL)
         contents = cursor.fetchall()
