@@ -8,4 +8,4 @@ def fib(iteracia):
     return c
 
 
-print(fib(20))
+print(fib(10))

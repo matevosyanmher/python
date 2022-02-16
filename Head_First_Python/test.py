@@ -1,14 +1,23 @@
+'''creat class person with name and age'''
 
 
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-def concat(*args):
-    return [a for arg in args for a in arg]
+    def __str__(self):
+        return "Person: " + self.name + " " + str(self.age)
 
-print(concat([1, 2, 3], [4, 5], [6, 7]) )
 
-print(concat([1], [2], [3], [4], [5], [6], [7]) )
+class Student(Person):
+    def __init__(self, name, age, major):
+        Person.__init__(self, name, age)
+        self.major = major
 
-print(concat([1, 2], [3, 4]))
+    def __str__(self):
+        return "Student: " + self.name + " " + str(self.age) + " " + self.major
 
-print(concat([4, 4, 4, 4, 4]) )
 
+st1 = Student("John", 20, "Math")
+print(st1)

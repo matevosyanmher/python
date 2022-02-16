@@ -31,7 +31,28 @@ class UseDatabase:
 
 
 class ConnectionError:
-    pass
+    """
+    ConnectionError is an exception that is raised when a connection to the
+    database cannot be made.
+    """
+
+    def __init__(self, exception: Exception) -> None:
+        """
+        Initialize the exception.
+        """
+        self.exception = exception
+
+    def __str__(self) -> str:
+        """
+        Return a string representation of the exception.
+        """
+        return f'Error: {self.exception}'
+
+    # def __repr__(self) -> str:
+    #     """
+    #     Return a string representation of the exception.
+    #     """
+    #     return f'Error: {self.exception}'
 
 
 class CredentialsError:

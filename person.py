@@ -2,24 +2,23 @@ class Person:
     NUMBER_OF_COPIES = 0
 
     def __init__(self, name, surname, place_of_birth):
-        self.name = name
+        self.__name = name
         self.surname = surname
         self.place_of_birth = place_of_birth
 
         Person.NUMBER_OF_COPIES += 1
 
-    def print_info(self):
-        print(f'Name: {self.name}, Surname: {self.surname}, Place of birth: {self.place_of_birth}')
+    def __repr__(self):
+        return print(f"{self.__name}, {self.surname}, {self.place_of_birth}")
 
     def __hash__(self) -> int:
         return super().__hash__()
 
 
-
 p1 = Person('Elon', 'Musk', 'ՀԱՀ')
-p1.print_info()
+p1.__repr__()
 p2 = Person('Mher', 'Matevosyan', 'Vanadzor')
-p2.print_info()
+p2.__repr__()
 print(Person.NUMBER_OF_COPIES)
 
 
