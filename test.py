@@ -8,16 +8,21 @@ class Item:
 
     def __init__(self, name: str, price: float, quantity: int):
         """assertions"""
-        assert isinstance(name, str), "Name must be a string"
-        assert isinstance(price, float), "Price must be a float"
-        assert isinstance(quantity, int), "Quantity must be an integer"
-        assert quantity > 0, "Quantity must be greater than 0"
-        assert price > 0, "Price must be greater than 0"
+        try:
+            assert isinstance(name, str), "Name must be a string"
+            assert isinstance(price, float), "Price must be a float"
+            assert isinstance(quantity, int), "Quantity must be an integer"
+            assert quantity > 0, "Quantity must be greater than 0"
+            assert price > 0, "Price must be greater than 0"
+            assert name not in self.__all_items, "Item already exists"
+        except AssertionError as error:
+            print(error)
+            # exit()
 
         self.name = name
         self.price = price
         self.quantity = quantity
-        self._object_count += 1
+        Item._object_count += 1
 
     def __repr__(self):
         return f"{self.name} - {self.price} - {self.quantity}"
@@ -56,9 +61,10 @@ class Item:
     def set_discount(cls, __discount):
         cls.discount = __discount
 
-    @property
-    def object_count(self):
-        return self._object_count
+    # get object count
+    @classmethod
+    def get_object_count(cls):
+        return cls._object_count
 
 
 class Phone(Item):
@@ -75,11 +81,5 @@ class Phone(Item):
 
 
 Item.read_csv_file('ObjectName.csv')
-print(Item.object_count)
 print(Item.get_all_items())
-phoneSamsung = Phone('Samsung Galaxy S10', 1000.0, 3, 'Samsung')
-phoneIphone = Phone('Iphone X', 200.0, 1, 'Apple')
-phoneIphone.set_discount(70)
-
-print(phoneSamsung.calculate_total_price())
-print(phoneIphone.add_price_by(10))
+print(Item.get_object_count())
