@@ -36,5 +36,7 @@ element1.click()
 
 element2 = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="mainForm:fiscalIncomes'
                                                                                      ':0:j_id202"]'))).click()
-element3 = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//td[@id='mainForm:fiscalIncomes:0:j_id202']"))).click()
+element3 = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, "//td[@id='mainForm:fiscalIncomes:0:j_id202']"))).click()
+
 

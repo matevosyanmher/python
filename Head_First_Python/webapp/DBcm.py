@@ -1,6 +1,18 @@
 import mysql.connector
 
 
+class ConnectionError(Exception):
+    pass
+
+
+class CredentialsError(Exception):
+    pass
+
+
+class SQLError(Exception):
+    pass
+
+
 class UseDatabase:
     """
     UseDatabase is a context manager that will make a connection to the
@@ -17,9 +29,14 @@ class UseDatabase:
         """
         Connect to the database and return a cursor to the database.
         """
-        self.conn = mysql.connector.connect(**self.configuration)
-        self.cursor = self.conn.cursor()
-        return self.cursor
+        try:
+            self.conn = mysql.connector.connect(**self.configuration)
+            self.cursor = self.conn.cursor()
+            return self.cursor
+        except mysql.connector.InterfaceError as err:
+            raise ConnectionError(err)
+        except mysql.connector.errors.ProgrammingError as err:
+            raise CredentialsError(err)
 
     def __exit__(self, exc_type, exc_value, exc_trace) -> None:
         """
@@ -28,36 +45,8 @@ class UseDatabase:
         self.conn.commit()
         self.cursor.close()
         self.conn.close()
+        if exc_type is mysql.connector.ProgrammingError:
+            raise SQLError(exc_value)
+        elif exc_type:
+            raise exc_type(exc_value)
 
-
-class ConnectionError:
-    """
-    ConnectionError is an exception that is raised when a connection to the
-    database cannot be made.
-    """
-
-    def __init__(self, exception: Exception) -> None:
-        """
-        Initialize the exception.
-        """
-        self.exception = exception
-
-    def __str__(self) -> str:
-        """
-        Return a string representation of the exception.
-        """
-        return f'Error: {self.exception}'
-
-    # def __repr__(self) -> str:
-    #     """
-    #     Return a string representation of the exception.
-    #     """
-    #     return f'Error: {self.exception}'
-
-
-class CredentialsError:
-    pass
-
-
-class SQLError:
-    pass

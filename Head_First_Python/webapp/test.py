@@ -97,13 +97,13 @@ import sys
 #     for a in err:
 #         print(a)
 
-
-try:
-    1 / 0
-except Exception as err:
-    print(err.__repr__())
-    print(err.__str__())
-    print(err.__cause__)
-    print(err.__context__)
-    print(err.__traceback__)
-    print(err.__suppress_context__)
+#
+# try:
+#     1 / 0
+# except Exception as err:
+#     print(err.__repr__())
+#     print(err.__str__())
+#     print(err.__cause__)
+#     print(err.__context__)
+#     print(err.__traceback__)
+#     print(err.__suppress_context__)

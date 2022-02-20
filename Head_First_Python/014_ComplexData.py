@@ -19,4 +19,4 @@ people['Robot'] = {'Name': 'Marvin',
                    'Occupation': 'Paranoid Android',
                    'Home Planet': 'Unknown'}
 
-print(people['Arthur']['Occupation'])
+print(people['Ford']['Occupation'])

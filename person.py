@@ -1,45 +1,55 @@
 class Person:
-    NUMBER_OF_COPIES = 0
+    __NUMBER_OF_COPIES = 0
 
     def __init__(self, name, surname, place_of_birth):
         self.__name = name
         self.surname = surname
         self.place_of_birth = place_of_birth
+        Person.__NUMBER_OF_COPIES += 1
 
-        Person.NUMBER_OF_COPIES += 1
+    @property
+    def name(self):
+        return self.__name
 
-    def __repr__(self):
-        return print(f"{self.__name}, {self.surname}, {self.place_of_birth}")
-
-    def __hash__(self) -> int:
-        return super().__hash__()
-
-
-p1 = Person('Elon', 'Musk', 'ՀԱՀ')
-p1.__repr__()
-p2 = Person('Mher', 'Matevosyan', 'Vanadzor')
-p2.__repr__()
-print(Person.NUMBER_OF_COPIES)
+    # @classmethod
+    # def get_name(cls):
+    #     return cls.__name
 
 
-class Circle:
-    PI = 3.14
+class Student(Person):
+    def __init__(self, name, surname, place_of_birth, year_of_birth, grade):
+        super().__init__(name, surname, place_of_birth)
+        self.year_of_birth = year_of_birth
+        self.grade = grade
 
-    def __init__(self, radius):
-        self.radius = radius
-
-    def get_area(self):
-        return Circle.PI * self.radius ** 2
-
-    def get_length(self):
-        return Circle.PI * 2 * self.radius
+    def get_name(self):
+        return self.name
 
 
-class NewCircle(Circle):
-    def __init__(self, radius: int) -> None:
-        super().__init__(radius)
+student1 = Student("Marvin", "Miller", "Henchmen", 1995, "A")
+print(student1.get_name())
 
-
-c2 = NewCircle(radius=6)
-c2.get_length()
-print(c2.get_area())
+#
+#
+#
+# class Circle:
+#     PI = 3.14
+#
+#     def __init__(self, radius):
+#         self.radius = radius
+#
+#     def get_area(self):
+#         return Circle.PI * self.radius ** 2
+#
+#     def get_length(self):
+#         return round(2 * Circle.PI * self.radius, 2)
+#
+#
+# class NewCircle(Circle):
+#     def __init__(self, radius: int) -> None:
+#         super().__init__(radius)
+#
+#
+# c2 = NewCircle(radius=5)
+# print(c2.get_area())
+# print(c2.get_length())
