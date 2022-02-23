@@ -12,7 +12,7 @@ class Person:
 
 class Student(Person):
     def __init__(self, name, age, major):
-        Person.__init__(self, name, age)
+        super().__init__(name, age)
         self.major = major
 
     def __str__(self):
@@ -20,4 +20,5 @@ class Student(Person):
 
 
 st1 = Student("John", 20, "Math")
+st2 = Student("Mary", 21, "English")
 print(st1)

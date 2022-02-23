@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='vsearch',
-      version='1.0',
+      version='1.1',
       description='The Head First Python Search Tools',
       author='HF Python 2e',
       author_email='hfpy2e@gmail.com',

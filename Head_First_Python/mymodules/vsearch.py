@@ -11,5 +11,5 @@ def search4letters(phrase: str, letter: str = "aeiou") -> set:
     """Return a set of letters found in phrase"""
     return set(letter).intersection(set(phrase))
 
-print(search4letters("galaxy", "yaz"))
+# print(search4letters("galaxy", "yaz"))
 # search4letters(phrase="galaxy", letter="xyz")
