@@ -8,7 +8,7 @@ from time import sleep
 app = Flask(__name__)
 app.config['dbconfig'] = {'host': '127.0.0.1',
                           'user': 'vsearch',
-                          'password': 'Mf101010$%',
+                          'password': 'vsearchpasswd',
                           'database': 'vsearchlogDB', }
 
 
@@ -44,7 +44,7 @@ def do_search() -> 'html':
     @copy_current_request_context
     def log_request(req: "flask_request", res: str) -> None:
         """Log details of the web request and the results"""
-        sleep(15)
+        sleep(1)
         with UseDatabase(app.config['dbconfig']) as cursor:
             _SQL = """insert into log
                             (phrase, letters, ip, browser_string, results)

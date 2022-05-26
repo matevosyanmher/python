@@ -1,11 +1,11 @@
-def fib(iteracia):
-    a = 0
-    b = 1
-    for i in range(iteracia):
-        c = a + b
-        a = b
-        b = c
-    return c
+# function to read filenames from folder and save them in xlsx file
+
+def fib(n):
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
 
 
-print(fib(10))
+
