@@ -21,3 +21,5 @@ print(instanceC1.C1attr)
 instanceC1.setName("C1")
 print(instanceC1.name)
 C2.setName(instanceC1, "C11")
+
+print(C1.__bases__)
