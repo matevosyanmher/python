@@ -5,6 +5,6 @@ number_1 = 1
 number_2 = 14
 print("number 1 = 1")
 print("number 2 = 14")
-sumOfNumbers = sum(list(range(number_1, number_2 + 1)))
+sumOfNumbers = sum((range(number_1, number_2 + 1)))
 
 print(f"sum of numbers form {number_1} to {number_2} is: ", sumOfNumbers)

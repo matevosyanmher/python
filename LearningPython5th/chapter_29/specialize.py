@@ -24,7 +24,7 @@ class Extender(Supper):
 
 class Provider(Supper):
     def action(self):
-        print('in Provider.cation')
+        print('in Provider.action')
 
 
 if __name__ == '__main__':
